@@ -1,4 +1,4 @@
-## SmoothingSplineExtensions
+### SmoothingSplineExtensions
 
 [![Build Status](https://github.com/dirkbeck/SmoothingSplineExtensions.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/dirkbeck/SmoothingSplineExtensions.jl/actions/workflows/CI.yml?query=branch%3Amaster)
 [![Coverage](https://codecov.io/gh/dirkbeck/SmoothingSplineExtensions.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/dirkbeck/SmoothingSplineExtensions.jl)
@@ -6,7 +6,7 @@
 A Julia package that adds to SmoothingSplines [1], which performs nonparametric regression with Cubic Smoothing Splines. The SmoothingSplineExtensions package resolves two of the "TO DOs" listed in the SmoothingSplines package: 1) conversion between regularization parameter λ and degrees of freedom, and 2) automatic selection of λ. It also includes methods for calculating error bars through a bootstrap technique [2] and fitting smoothing splines with boosting [3].
 
 
-# TO DO
+**TO DO**
 
 * make code more efficient
 * add alternate methods for determining CV, λ, error bars etc.
