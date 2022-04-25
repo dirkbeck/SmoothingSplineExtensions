@@ -1,6 +1,6 @@
 module SplineSmoothingExtensions
 
-export getloocv, getoptimallambda, plotlambdavscv, geterrorbars, getsmoothermatrix, getboostingsmoothingspline, plotboostingsmoothingsplineMSEs
+export getloocv, getoptimallambda, plotlambdavscv, geterrorbars, getsmoothermatrix, getdegreesoffreedom, getboostingsmoothingspline, plotboostingsmoothingsplineMSEs
 
 using SmoothingSplines, Gadfly, LinearAlgebra
 
@@ -76,7 +76,7 @@ function getdegreesoffreedom(X, lambda)
     return tr(getsmoothermatrix(X, lambda))
 end
 
-function getboostingsmoothingspline(X,Y,lambda,iter,v,plotMSEs)
+function getboostingsmoothingspline(X,Y,lambda,iter,v)
     # gets Y predictions by boosting smoothing splines given number of iterations (iter) with a penalty scalar (0 ≤ v ≤ 1)
     Ypred = copy(Y);
     for i=0:iter
