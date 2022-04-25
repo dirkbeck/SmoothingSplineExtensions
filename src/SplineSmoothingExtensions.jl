@@ -4,7 +4,7 @@ export get_loocv, get_optimal_lambda, plot_lambda_vs_cv, get_error_bars, get_smo
 
 using SmoothingSplines, Gadfly, LinearAlgebra
 
-function get_loocv(X,Y,lambda)
+function getloocv(X,Y,lambda)
     # gets leave-one-out cross-validation for a smoothingspline fit on given data
     err = 0.0;
     for i = 1:length(X);
@@ -13,25 +13,25 @@ function get_loocv(X,Y,lambda)
     err = err/length(X);
 end
 
-function get_optimal_lambda(X,Y,lambda_precision,max_iter)
+function getoptimallambda(X,Y,lambda_precision,max_iter)
     # finds lambda such that loocv has a local minimum
     lambda = 0.0;
     cv_previous_lambda = Inf;
-    cv_current_lambda = get_loocv(X,Y,lambda);
+    cv_current_lambda = getloocv(X,Y,lambda);
     while cv_current_lambda < cv_previous_lambda && lambda < max_iter*lambda_precision
         lambda += lambda_precision;
         cv_previous_lambda = cv_current_lambda;
-        cv_current_lambda = get_loocv(X,Y,lambda);
+        cv_current_lambda = getloocv(X,Y,lambda);
     end
     return lambda - lambda_precision
 end
 
-function plot_lambda_vs_cv(X,Y,lambda_precision,iter)
+function plotlambdavscv(X,Y,lambda_precision,iter)
     # plots lambda vs cv over the range [0 iter]
     lambdas = 0.0:lambda_precision:(iter-1)*lambda_precision;
     cvs = zeros(iter);
     for i=1:iter
-        cvs[i] = get_loocv(X,Y,lambdas[i]);
+        cvs[i] = getloocv(X,Y,lambdas[i]);
     end
     plot(layer(x=lambdas, y=cvs, Geom.line),
         layer(x=[lambdas[findfirst(isequal(minimum(cvs)), cvs)]], y=[minimum(cvs)], Geom.point),
@@ -40,7 +40,7 @@ function plot_lambda_vs_cv(X,Y,lambda_precision,iter)
         Guide.Title("Optimal λ"))
 end
 
-function get_error_bars(X,Y,lambda,confidence_interval)
+function geterrorbars(X,Y,lambda,confidence_interval)
     # returns upper and lower confidence interval using a leave-one-out bootstrap method.
     # 95% confidence_interval would return the 2.5th and 97.5th percentile of predictions at each X value.
     m = length(X);
@@ -58,7 +58,7 @@ function get_error_bars(X,Y,lambda,confidence_interval)
     return lower_confidence_interval, upper_confidence_interval
 end
 
-function get_smoother_matrix(X, lambda)
+function getsmoothermatrix(X, lambda)
     # gets the matrix that smoothens X in smoothing splines
     n = length(X);
     w = zeros(n,n);
@@ -71,9 +71,9 @@ function get_smoother_matrix(X, lambda)
     return(w)
 end
 
-function get_degrees_of_freedom(X, lambda)
+function getdegreesoffreedom(X, lambda)
     # gets approximate degrees of freedom for some lambda, calculated as the trace of the smoother matrix
-    return tr(get_smoother_matrix(X, lambda))
+    return tr(getsmoothermatrix(X, lambda))
 end
 
 function get_boosting_smoothing_spline(X,Y,lambda,iter,v,plotMSEs)
@@ -86,8 +86,8 @@ function get_boosting_smoothing_spline(X,Y,lambda,iter,v,plotMSEs)
     return Ypred
 end
 
-function plot_boosting_smoothing_spline_MSEs(X,Y,lambda,iter,v)
-    # similar to get_boosting_smoothing_spline, but plots the MSE at each iteration
+function plotboostingsmoothingsplineMSEs(X,Y,lambda,iter,v)
+    # similar to getboostingsmoothingspline, but plots the MSE at each iteration
     Ypred = copy(Y);
     mses = zeros(iter+1)
     for i=0:iter
