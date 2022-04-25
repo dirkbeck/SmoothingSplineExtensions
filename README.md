@@ -18,6 +18,6 @@ A Julia package that adds to SmoothingSplines [1], which performs nonparametric 
 
 [1] https://github.com/nignatiadis/SmoothingSplines.jl/blob/master/README.md (2022).
 
-[2] Wang, Y., &amp; Wahba, G. (1995). Bootstrap Confidence Intervals for Smoothing Splines and their Comparison to Bayesian 'Confidence Intervals'. Journal of Statistical Computation and Simulation, 51(2-4), 263–279.
+[2] Wang, Y. &amp; Wahba, G. (1995). Bootstrap Confidence Intervals for Smoothing Splines and their Comparison to Bayesian 'Confidence Intervals'. Journal of Statistical Computation and Simulation, 51(2-4), 263–279.
 
 [3] Peter Bühlmann & Bin Yu (2003). Boosting With the L2 Loss, Journal of the American Statistical Association, 98:462, 324-339.
