@@ -76,9 +76,8 @@ function getdegreesoffreedom(X, lambda)
     return tr(getsmoothermatrix(X, lambda))
 end
 
-function get_boosting_smoothing_spline(X,Y,lambda,iter,v,plotMSEs)
+function getboostingsmoothingspline(X,Y,lambda,iter,v,plotMSEs)
     # gets Y predictions by boosting smoothing splines given number of iterations (iter) with a penalty scalar (0 ≤ v ≤ 1)
-    # if plotMSES is set to TRUE, a plot of decreasing MSEs is displayed
     Ypred = copy(Y);
     for i=0:iter
         Ypred = predict(fit(SmoothingSpline, X, Y + v * (Y - Ypred), lambda));
