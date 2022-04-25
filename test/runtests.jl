@@ -20,6 +20,6 @@ max_iter = 100;
 lambda_precision = 1.0;
 confidence_interval = .95;
 
-@test SplineSmoothingExtensions.getloocv ≈ 245.45616042973157 rtol=1e-4
-@test SplineSmoothingExtensions.getoptimallambda ≈ 99.0 rtol=.9
-@test SplineSmoothingExtensions.getdegreesoffreedom(X, lambda) ≈ 5.1089512303522495 rtol=1e-4
+@test getloocv(X,Y,lambda) ≈ 245.45616042973157
+@test getoptimallambda(X,Y,lambda_precision,max_iter) ≈ 99.0
+@test getdegreesoffreedom(X, lambda) ≈ 5.1089512303522495
