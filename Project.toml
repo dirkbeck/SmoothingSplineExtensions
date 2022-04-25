@@ -1,0 +1,15 @@
+name = "SplineSmoothingExtensions"
+uuid = "dff1fc20-1c9a-48ac-9b57-5966a22195f3"
+authors = ["dirkbeck <dbeck@miners.utep.edu> and contributors"]
+version = "0.1.0"
+
+[deps]
+SmoothingSplines = "102930c3-cf33-599f-b3b1-9a29a5acab30"
+Gadfly = "c91e804a-d5a3-530f-b6f0-dfbca275c004"
+RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
