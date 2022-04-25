@@ -62,7 +62,10 @@ function plotfitwitherrorbars(X,Y,lambda,confidence_interval)
     # similar to geterrorbars, but returns a plot
     lower_confidence_interval, upper_confidence_interval = geterrorbars(X,Y,lambda,confidence_interval)
     plot(layer(x=X, y=Y, Geom.point),
-      layer(x=X, y=predict(fit(SmoothingSpline,X,Y,lambda)), ymin = lower_confidence_interval, ymax = upper_confidence_interval, Geom.line, Geom.ribbon))
+        layer(x=X, y=predict(fit(SmoothingSpline,X,Y,lambda)), ymin = lower_confidence_interval, ymax = upper_confidence_interval, Geom.line, Geom.ribbon),
+        Guide.xlabel("x"),
+        Guide.ylabel("y"),
+        Guide.Title("Smoothing spline with error bars"))
 end
 
 function getsmoothermatrix(X, lambda)
