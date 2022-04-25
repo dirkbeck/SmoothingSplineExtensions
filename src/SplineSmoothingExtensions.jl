@@ -1,6 +1,6 @@
 module SplineSmoothingExtensions
 
-export get_loocv, get_optimal_lambda, plot_lambda_vs_cv, get_error_bars, get_smoother_matrix, get_boosting_smoothing_spline, plot_boosting_smoothing_spline_MSEs
+export getloocv, getoptimallambda, plotlambdavscv, geterrorbars, getsmoothermatrix, getboostingsmoothingspline, plotboostingsmoothingsplineMSEs
 
 using SmoothingSplines, Gadfly, LinearAlgebra
 
