@@ -1,6 +1,6 @@
 module SplineSmoothingExtensions
 
-export getloocv, getoptimallambda, plotlambdavscv, geterrorbars, getsmoothermatrix, getdegreesoffreedom, getboostingsmoothingspline, plotboostingsmoothingsplineMSEs
+export getloocv, getoptimallambda, plotlambdavscv, geterrorbars, plotfitwitherrorbars, getsmoothermatrix, getdegreesoffreedom, getboostingsmoothingspline, plotboostingsmoothingsplineMSEs
 
 using SmoothingSplines, Gadfly, LinearAlgebra
 
@@ -56,6 +56,13 @@ function geterrorbars(X,Y,lambda,confidence_interval)
         upper_confidence_interval[i] = sort!(copy(loo_estimates[:,i]))[Int(ceil((m-1)*(1 - (1 - confidence_interval)/2)+1))];
     end
     return lower_confidence_interval, upper_confidence_interval
+end
+
+function plotfitwitherrorbars(X,Y,lambda,confidence_interval)
+    # similar to geterrorbars, but returns a plot
+    lower_confidence_interval, upper_confidence_interval = geterrorbars(X,Y,lambda,confidence_interval)
+    plot(layer(x=X, y=Y, Geom.point),
+      layer(x=X, y=predict(fit(SmoothingSpline,X,Y,lambda)), ymin = lower_confidence_interval, ymax = upper_confidence_interval, Geom.line, Geom.ribbon))
 end
 
 function getsmoothermatrix(X, lambda)
