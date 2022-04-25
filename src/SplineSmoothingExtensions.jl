@@ -2,9 +2,7 @@ module SplineSmoothingExtensions
 
 export get_loocv, get_optimal_lambda, plot_lambda_vs_cv, get_error_bars, get_smoother_matrix, get_boosting_smoothing_spline, plot_boosting_smoothing_spline_MSEs
 
-#using SmoothingSplines, Gadfly, RDatasets
-#Pkg.activate(".")
-#using SmoothingSplinesExtensions
+using SmoothingSplines, Gadfly, RDatasets
 
 function get_loocv(X,Y,lambda)
     # gets leave-one-out cross-validation for a smoothingspline fit on given data
