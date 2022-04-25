@@ -2,7 +2,7 @@ module SplineSmoothingExtensions
 
 export get_loocv, get_optimal_lambda, plot_lambda_vs_cv, get_error_bars, get_smoother_matrix, get_boosting_smoothing_spline, plot_boosting_smoothing_spline_MSEs
 
-using SmoothingSplines, Gadfly
+using SmoothingSplines, Gadfly, LinearAlgebra
 
 function get_loocv(X,Y,lambda)
     # gets leave-one-out cross-validation for a smoothingspline fit on given data
@@ -69,6 +69,11 @@ function get_smoother_matrix(X, lambda)
         w[:,i] = predict(spl);
     end
     return(w)
+end
+
+function get_degrees_of_freedom(X, lambda)
+    # gets approximate degrees of freedom for some lambda, calculated as the trace of the smoother matrix
+    return tr(get_smoother_matrix(X, lambda))
 end
 
 function get_boosting_smoothing_spline(X,Y,lambda,iter,v,plotMSEs)
