@@ -6,6 +6,7 @@ version = "0.1.0"
 [deps]
 SmoothingSplines = "102930c3-cf33-599f-b3b1-9a29a5acab30"
 Gadfly = "c91e804a-d5a3-530f-b6f0-dfbca275c004"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [compat]
 julia = "1"
