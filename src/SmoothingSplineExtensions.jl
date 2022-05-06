@@ -95,6 +95,13 @@ function getboostingsmoothingspline(X,Y,lambda,iter,v)
     return Ypred
 end
 
+function boostingsmoothingsplinepred(X, Y, lambda, iter, v, x)
+    # makes a prediction from a boosted smoothing spine using a cubic spline fit through boosted predictions
+    # X, Y, lambda, iter, v apply to the fit through X and Y, similar to the inputs in getboostingsmoothingspline
+    # x is the point at which the prediction is made
+    return predict(fit(SmoothingSpline, X, getboostingsmoothingspline(X,Y,lambda,iter,v), 0.0), x)
+end
+
 function plotboostingsmoothingsplineMSEs(X,Y,lambda,iter,v)
     # similar to getboostingsmoothingspline, but plots the MSE at each iteration
     Ypred = copy(Y);
