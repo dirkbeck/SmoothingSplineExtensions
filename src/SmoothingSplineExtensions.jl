@@ -1,4 +1,4 @@
-module SplineSmoothingExtensions
+module SmoothingSplineExtensions
 
 export getloocv, getoptimallambda, plotlambdavscv, geterrorbars, plotfitwitherrorbars, getsmoothermatrix, getdegreesoffreedom, getboostingsmoothingspline, plotboostingsmoothingsplineMSEs
 
